@@ -8,9 +8,10 @@ import { AppareilService } from '../services/appareil.service';
 })
 export class AppareilComponent implements OnInit {
 
-  @Input() appareilName: string ;
+  @Input() appareilName: string;
   @Input() appareilStatus: string;
   @Input() indexOfAppareil: number;
+  @Input() id: number;
 
   constructor(private appareilService: AppareilService) { }
 
@@ -21,18 +22,18 @@ export class AppareilComponent implements OnInit {
     return this.appareilStatus;
   }
   getColor() {
-    if(this.appareilStatus === 'allumé') {
+    if (this.appareilStatus === 'allumé') {
       return 'green';
-    } else if(this.appareilStatus === 'éteint') {
+    } else if (this.appareilStatus === 'éteint') {
       return 'red';
     }
-}
-onSwitch() {
-    if(this.appareilStatus === 'allumé') {
+  }
+  onSwitch() {
+    if (this.appareilStatus === 'allumé') {
       this.appareilService.switchOffOne(this.indexOfAppareil);
-    } else if(this.appareilStatus === 'éteint') {
+    } else if (this.appareilStatus === 'éteint') {
       this.appareilService.switchOnOne(this.indexOfAppareil);
     }
-}
+  }
 
 }
